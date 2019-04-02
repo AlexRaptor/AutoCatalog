@@ -9,40 +9,33 @@
 import Foundation
 
 class Car: Codable {
-    enum Property: String {
+    enum Property {
         case year
         case model
         case manufacturer
         case `class`
         case bodyType
+        
+        static let allValues: [Property] = [.year, .model, .manufacturer, .class, .bodyType]
     }
     
-    private var data: [Property: String] = [:]
+    private var data: [String] = []
+    
+    init() {
+        
+        data = [String](repeating: "", count: Property.allValues.count)
+    }
     
     required init(from decoder: Decoder) throws {
         
         let container = try decoder.singleValueContainer()
-        let decodableData = try container.decode([String: String].self)
-        
-        for (key, value) in decodableData {
-            data[Property(rawValue: key)!] = value
-        }
+        data = try container.decode([String].self)
     }
     
     func encode(to encoder: Encoder) throws {
         
-        var container = try encoder.singleValueContainer()
-        var result: [String: String] = [:]
-
-        for (key, value) in data {
-            result[key.rawValue] = value
-        }
-
-//        let result = data.reduce(into: [String: String](), { (acc, pair) in
-//            acc[pair.key.rawValue] = pair.value
-//        })
-        
-        try container.encode(result)
+        var container = encoder.singleValueContainer()
+        try container.encode(data)
     }
 }
 
