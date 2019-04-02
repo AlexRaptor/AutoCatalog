@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3F2DEBBC224F4D6400E4AD9A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DEBBB224F4D6400E4AD9A /* main.swift */; };
+		3F8296592253965B0044ECD3 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8296582253965B0044ECD3 /* Car.swift */; };
+		3F82965B225396CD0044ECD3 /* CarsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82965A225396CD0044ECD3 /* CarsStorage.swift */; };
+		3F82965D225397070044ECD3 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82965C225397070044ECD3 /* Console.swift */; };
+		3F82965F225398140044ECD3 /* Comands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82965E225398140044ECD3 /* Comands.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,10 @@
 /* Begin PBXFileReference section */
 		3F2DEBB8224F4D6400E4AD9A /* AutoCatalog */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AutoCatalog; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F2DEBBB224F4D6400E4AD9A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		3F8296582253965B0044ECD3 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		3F82965A225396CD0044ECD3 /* CarsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsStorage.swift; sourceTree = "<group>"; };
+		3F82965C225397070044ECD3 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
+		3F82965E225398140044ECD3 /* Comands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				3F2DEBBB224F4D6400E4AD9A /* main.swift */,
+				3F8296582253965B0044ECD3 /* Car.swift */,
+				3F82965A225396CD0044ECD3 /* CarsStorage.swift */,
+				3F82965C225397070044ECD3 /* Console.swift */,
+				3F82965E225398140044ECD3 /* Comands.swift */,
 			);
 			path = AutoCatalog;
 			sourceTree = "<group>";
@@ -119,7 +131,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F8296592253965B0044ECD3 /* Car.swift in Sources */,
+				3F82965B225396CD0044ECD3 /* CarsStorage.swift in Sources */,
 				3F2DEBBC224F4D6400E4AD9A /* main.swift in Sources */,
+				3F82965D225397070044ECD3 /* Console.swift in Sources */,
+				3F82965F225398140044ECD3 /* Comands.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
