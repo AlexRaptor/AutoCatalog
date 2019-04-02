@@ -9,32 +9,61 @@
 import Foundation
 
 class Car: Codable {
+    enum Property: String {
+        case year
+        case model
+        case manufacturer
+        case `class`
+        case bodyType
+    }
     
-    let year: Int
-    let model: String
-    let manufacturer: String
-    let `class`: String
-    let bodyType: String
+    private var data: [Property: String] = [:]
+    
+    required init(from decoder: Decoder) throws {
+        
+        let container = try decoder.singleValueContainer()
+        let decodableData = try container.decode([String: String].self)
+        
+        for (key, value) in decodableData {
+            data[Property(rawValue: key)!] = value
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        
+        var container = try encoder.singleValueContainer()
+        var result: [String: String] = [:]
+
+        for (key, value) in data {
+            result[key.rawValue] = value
+        }
+
+//        let result = data.reduce(into: [String: String](), { (acc, pair) in
+//            acc[pair.key.rawValue] = pair.value
+//        })
+        
+        try container.encode(result)
+    }
 }
 
-extension Car: Hashable {
-    
-    static func == (lhs: Car, rhs: Car) -> Bool {
-        return lhs.year == rhs.year
-            && lhs.model == rhs.model
-            && lhs.manufacturer == rhs.manufacturer
-            && lhs.class == rhs.manufacturer
-            && lhs.bodyType == rhs.bodyType
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(year)
-        hasher.combine(model)
-        hasher.combine(manufacturer)
-        hasher.combine(self.class)
-        hasher.combine(bodyType)
-    }
-}
+//extension Car: Hashable {
+//
+//    static func == (lhs: Car, rhs: Car) -> Bool {
+//        return lhs.year == rhs.year
+//            && lhs.model == rhs.model
+//            && lhs.manufacturer == rhs.manufacturer
+//            && lhs.class == rhs.manufacturer
+//            && lhs.bodyType == rhs.bodyType
+//    }
+//
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(year)
+//        hasher.combine(model)
+//        hasher.combine(manufacturer)
+//        hasher.combine(self.class)
+//        hasher.combine(bodyType)
+//    }
+//}
 
 class CarsStorage {
     
