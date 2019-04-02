@@ -21,6 +21,23 @@ class Car: Codable {
     
     private var data: [String] = []
     
+    subscript(property: Property) -> String {
+        get {
+            if let index = Property.allValues.firstIndex(of: property), index < data.count {
+                return data[index]
+            }
+            return ""
+        }
+        set {
+            if let index = Property.allValues.firstIndex(of: property){
+                while data.count <= index {
+                    data.append("")
+                }
+                data[index] = newValue
+            }
+        }
+    }
+    
     init() {
         
         data = [String](repeating: "", count: Property.allValues.count)
@@ -125,3 +142,6 @@ class CarsStorage {
         return false
     }
 }
+
+let car = Car()
+car[.manufacturer] = "BMW"
