@@ -15,12 +15,13 @@ class Console {
     func run() {
         
         print("\nHello!")
+        print("Enter 'help' for print list of commands")
         
-        var exitComand = Comands.exit
+        var exitCommand = Commands.exit
         
         repeat {
         
-            print("\nenter comand ('help' for list) >> ", separator: "", terminator: "")
+            print("\n>> ", separator: "", terminator: "")
             let str = readLine()
             
             guard var strCmd = str else { continue }
@@ -29,17 +30,17 @@ class Console {
             
             strCmd = components[0]
             
-            guard let comand = Comands.init(rawValue: strCmd) else { continue }
+            guard let command = Commands.init(rawValue: strCmd) else { continue }
             
             var index: Int? = nil
             if components.count > 1 {
                 index = Int(components[1])
             }
             
-            Comands.allComands[comand]?(storage, index)
+            Commands.allCommands[command]?.command(storage, index)
             
-            exitComand = comand
+            exitCommand = command
             
-        } while exitComand != .exit
+        } while exitCommand != .exit
     }
 }
