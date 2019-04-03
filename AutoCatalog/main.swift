@@ -15,3 +15,6 @@ import Foundation
 
 //let string = readLine()
 //print(string)
+
+let console = Console()
+console.run()

@@ -14,17 +14,32 @@ class Console {
     
     func run() {
         
-        var exit = false
+        print("\nHello!")
+        
+        var exitComand = Comands.exit
         
         repeat {
         
-            print(">> ", separator: "", terminator: "")
+            print("\nenter comand ('help' for list) >> ", separator: "", terminator: "")
             let str = readLine()
             
-            guard let strCmd = str, let comand = Comands.init(rawValue: strCmd) else { continue }
+            guard var strCmd = str else { continue }
             
-            Comands.allComands[comand](storage, nil)
+            let components = strCmd.components(separatedBy: " ")
             
-        } while !exit
+            strCmd = components[0]
+            
+            guard let comand = Comands.init(rawValue: strCmd) else { continue }
+            
+            var index: Int? = nil
+            if components.count > 1 {
+                index = Int(components[1])
+            }
+            
+            Comands.allComands[comand]?(storage, index)
+            
+            exitComand = comand
+            
+        } while exitComand != .exit
     }
 }

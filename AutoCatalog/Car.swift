@@ -12,12 +12,12 @@ class Car: Codable {
     
     enum Property: String {
         case year
-        case model
         case manufacturer
-        case `class`
+        case model
         case bodyType
+        case `class`
         
-        static let allValues: [Property] = [.year, .model, .manufacturer, .class, .bodyType]
+        static let allValues: [Property] = [.year, .manufacturer, .model, .bodyType, .class]
     }
     
     private var data: [String] = []
@@ -59,9 +59,14 @@ class Car: Codable {
 
 extension Car: CustomStringConvertible {
     var description: String {
-        return Property.allValues.reduce(into: "") { (acc, property) in
-            acc += property.rawValue + ": " + self[property] + ", "
+        
+        var propertyStrings = [String]()
+        
+        for property in Car.Property.allValues {
+            propertyStrings.append("\(property.rawValue): \(self[property])")
         }
+        
+        return "[" + propertyStrings.joined(separator: ", ") + "]"
     }
 }
 
@@ -69,17 +74,17 @@ extension Car: CustomStringConvertible {
 //
 //    static func == (lhs: Car, rhs: Car) -> Bool {
 //        return lhs.year == rhs.year
-//            && lhs.model == rhs.model
 //            && lhs.manufacturer == rhs.manufacturer
-//            && lhs.class == rhs.manufacturer
+//            && lhs.model == rhs.model
 //            && lhs.bodyType == rhs.bodyType
+//            && lhs.class == rhs.manufacturer
 //    }
 //
 //    func hash(into hasher: inout Hasher) {
 //        hasher.combine(year)
-//        hasher.combine(model)
 //        hasher.combine(manufacturer)
-//        hasher.combine(self.class)
+//        hasher.combine(model)
 //        hasher.combine(bodyType)
+//        hasher.combine(self.class)
 //    }
 //}

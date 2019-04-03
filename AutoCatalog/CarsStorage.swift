@@ -60,7 +60,7 @@ class CarsStorage {
         
         assert(cars.contains { car === $0 })
         cars.removeAll { $0 === car }
-        return true
+        return save()
     }
     
     func modify(car: Car, with newCar: Car) -> Bool {
